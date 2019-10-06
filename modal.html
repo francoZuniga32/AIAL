@@ -14,11 +14,12 @@
 
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <script src="scriptNas.js"></script>
 </head>
 <body>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" >
             Launch demo modal
       </button>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2">
@@ -69,6 +70,25 @@
             </div>
           </div>
 
+          <div class="card col-sm container" style="width: 300px; height: 80px; margin:10px;" id="carpeta">
+            <div class="card-body w-100 row">
+                <div class="col-sm">
+                  <i class="material-icons">
+                    folder
+                  </i>
+                </div>
+                <div class="col-sm">
+                  folder
+                </div>
+                <div class="col-sm">
+                  <a href="">
+                      <i class="material-icons" onclick="alert('')">
+                        more_vert
+                      </i>
+                  </a>
+                </div>
+            </div>
+        </div>
     <script>
     $('#myModal').on('shown.bs.modal', function () {
         $('#myInput').trigger('focus')

@@ -1,8 +1,9 @@
 function cargarDatos() {
-    var raiz = "/home/franco/Descargas";
+    raiz = "/home/franco/Descargas/";
     meterContenido(raiz);
 }
 
-function hoola(string) {
-    alert(string); 
+function cargarCarpeta(url) {
+    console.log(url);
+    meterContenido(url);
 }

@@ -14,7 +14,10 @@
 
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <script src="scriptNas.js"></script>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body onload="cargarDatos()">
 
@@ -22,13 +25,14 @@
 
     </div>
     <script>
-    function meterContenido(url){
+    function meterContenido(path){
+        console.log(path);
         var parametros = {
-            "url" : "/home/franco/Descargas"
+            "url" : path
         };
         $.ajax({
             data:  parametros, //datos que se envian a traves de ajax
-            url:   'datos.php', //archivo que recibe la peticion
+            url:   'ejemplo.php', //archivo que recibe la peticion
             type:  'post', //método de envio
             beforeSend: function () {
                     $("#contenido").html("<div class=\"spinner-border\" role=\"status\"><span class=\"sr-only\">Loading...</span></div>");

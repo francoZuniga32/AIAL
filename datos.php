@@ -2,62 +2,77 @@
 
 
 $url = $_POST["url"];
-$directorio = opendir($url); //ruta actual
 
 $contadorContenido = 0;
-
-echo "<div class=\"row bg-secondary\">".$url;
-//obtenemos un archivo y luego otro sucesivamente
-while ($archivo = readdir($directorio)){
-    cargar($archivo, $url);
-
-}
+listarArchivos($url);
 
 function listarArchivos( $path ){
+    $contadorContenido = 0;
     $dir = opendir($path);
     $files = array();
     while ($elemento = readdir($dir)){
         if($contadorContenido % 4 == 0){
-            echo "</div>";
-            echo "<div class=\"row bg-secondary\">";
+            echo "</div>
+            <div class=\"row\">";
         }
-
         if( $elemento != "." && $elemento != ".."){
-        
-            if( is_dir($path.$elemento) ){
+            if( is_dir($elemento) ){
                 //listarArchivos( $path.$elemento.'/' );
-                echo "<br>";
                 carpeta($path.$elemento);
-            }
-            else{
-                $files[] = $elemento;
+                echo "hola mundo";
+            }else{
+                ejecutable($elemento);
             }
         }
+        $contadorContenido = $contadorContenido + 1;
     }
-    echo $path;
-    for($i=0; $i<count( $files ); $i++){
-        ejecutable($files[$i]);
-    }
-
-    $contadorContenido = $contadorContenido + 1;
 }
 
-
 function ejecutable($nombreArchivo){
+    
     echo "
-    <div class=\"card col w-25\">
-        <div class=\"card-body\">
-            ".$nombreArchivo."
+    <div class=\"card col-sm\" style=\"width: 300px; height: 80px; margin:10px;\">
+        <div class=\"card-body w-100\">
+            <p class=\"w-auto\">".$nombreArchivo."</p>
         </div>
     </div>";
 }
 
 function carpeta($nombreArchivo){
     echo "
-    <div class=\"card col w-25\">
-        <div class=\"card-body\">meterContenido
-            <button type=\"button\ class=\"btn btn-light\" onclick=\"\">".$nombreArchivo."</button>
+    <div class=\"card col-sm container\" style=\"width: 300px; height: 80px; margin:10px;\" id=\"carpeta\">
+        <div class=\"card-body w-100 row\">
+            <div class=\"col-sm\">
+              <i class=\"material-icons\">
+                folder
+              </i>
+            </div>
+            <div class=\"col-sm\">
+              folder
+            </div>
+            <div class=\"col-sm\">
+              <a href=\"\" onclick=\"alert('$nombreArchivo')\">
+                  <i class=\"material-icons\">
+                    ".$nombreArchivo."
+                  </i>
+              </a>
+            </div>
         </div>
     </div>";
 }
+
+/*function file(){
+
+}
+
+function video(){
+
+}
+
+function imagen(){
+
+}*/
+
+
+
 ?>
