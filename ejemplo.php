@@ -83,7 +83,7 @@ function ejecutable($nombreArchivo){
 
 function carpeta($nombreArchivo, $path){
     echo "
-    <div class=\"card col-sm container\" style=\"margin:10px;\" id=\"\">
+    <div class=\"card col-sm container\" style=\"margin:10px;\" ondblclick=\"cargarCarpeta('".$path.$nombreArchivo."/');\">
         <div class=\"card-body w-100 row\">
             <div class=\"col-sm\">
               <i class=\"material-icons\">
@@ -94,7 +94,7 @@ function carpeta($nombreArchivo, $path){
                 ".$nombreArchivo."
             </div>
             <div class=\"col-sm\">
-              <button href=\"\" onclick=\"cargarCarpeta('".$path.$nombreArchivo."/');\">
+              <button href=\"\" onclick=\"\">
                   <i class=\"material-icons\">
                     more_vert
                   </i>

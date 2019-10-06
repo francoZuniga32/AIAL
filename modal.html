@@ -28,6 +28,14 @@
       <button type="button" class="btn btn-primary" onclick="hoola('funcion')">
           soso
       </button>
+      <div ondblclick="modal('#modal2');">
+        hola moda
+      </div>
+      <script>
+      function modal(string){
+        $(string).modal("show");
+      }
+      </script>
     <!-- Modal -->
     <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
