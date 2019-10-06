@@ -14,14 +14,15 @@
 
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="scriptNas.js"></script>
 </head>
-<body onload="meterContenido()">
+<body onload="cargarDatos()">
 
-    <div id="contenido" class="">
+    <div id="contenido" class="container">
 
     </div>
     <script>
-    function meterContenido() {
+    function meterContenido(url){
         var parametros = {
             "url" : "/home/franco/Descargas"
         };
