@@ -17,9 +17,9 @@ function listarArchivos( $path ){
         if( $elemento != "." && $elemento != ".."){
             //cargamos los archivos
             if( is_dir($path.$elemento) ){
-                if($contadorContenido % 4 == 0){
+                if($contadorContenido % 3 == 0){
                     echo "</div>
-                    <div class=\"row\">";
+                    <div class=\"row justify-content-start\">";
                 }
                 carpeta($elemento, $path); 
                 //incrementamos la variable
@@ -30,12 +30,12 @@ function listarArchivos( $path ){
             }
         }
     }
-    echo "<hr>";
+    echo "</div><hr/>";
 
     for($i=0; $i<count( $files ); $i++){
-        if($i % 4 == 0){
+        if($i % 3 == 0){
             echo "</div>
-            <div class=\"row\">";
+            <div class=\"row justify-content-start\">";
         }
         ejecutable($files[$i]);
     }
@@ -74,7 +74,7 @@ function botonBack($url){
 function ejecutable($nombreArchivo){
 
     echo "
-    <div class=\"card col-sm\" style=\"margin:10px;\">
+    <div class=\"card col-sm\" style=\"margin:10px;\" ondblclick=\"cargarImagen('".$nombreArchivo."');\" >
         <div class=\"card-body w-100\">
             <p class=\"w-auto\">".$nombreArchivo."</p>
         </div>
@@ -84,13 +84,13 @@ function ejecutable($nombreArchivo){
 function carpeta($nombreArchivo, $path){
     echo "
     <div class=\"card col-sm container\" style=\"margin:10px;\" ondblclick=\"cargarCarpeta('".$path.$nombreArchivo."/');\">
-        <div class=\"card-body w-100 row\">
-            <div class=\"col-sm\">
+        <div class=\"card-body w-100 row align-items-center\">
+            <div class=\"col-sm\" style=\"width: 80px; padding: 0%;\">
               <i class=\"material-icons\">
                 folder
               </i>
             </div>
-            <div class=\"col-sm\" >
+            <div class=\"col-sm texto\" >
                 ".$nombreArchivo."
             </div>
             <div class=\"col-sm\">
