@@ -15,15 +15,16 @@ if($url != "media/"){
     botonBack($back);
 }
 
+listarArchivos( $url );
 
-function listarArchivos( $path ){
-    $dir = opendir($path);
-    $files = array();
+function listarArchivos( $url ){
+    $directorioRaiz = opendir($url);
+    $archivo = array();
     $contadorContenido = 0;
-    while ($elemento = readdir($dir)){
+    while ($elemento = readdir($directorioRaiz)){
         if( $elemento != "." && $elemento != ".."){
             //cargamos los archivos
-            if( is_dir($path.$elemento) ){
+            if( is_dir($url.$elemento) ){
                 if($contadorContenido % 3 == 0){
                     echo "</div>
                     <div class=\"row justify-content-start\">";
@@ -33,23 +34,21 @@ function listarArchivos( $path ){
                 $contadorContenido = $contadorContenido + 1;
             }
             else{
-                $files[] = $elemento;
+                $archivo[] = $elemento;
             }
         }
     }
     echo "</div><hr/>";
 
-    for($i=0; $i<count( $files ); $i++){
+    for($i=0; $i<count( $archivo ); $i++){
         if($i % 3 == 0){
             echo "</div>
             <div class=\"row justify-content-start\">";
         }
-        ejecutable($files[$i], $path);
+        ejecutable($archivo[$i], $url);
     }
     echo "<BR>";
 }
-    
-listarArchivos( $url );
 
 function accederFicheroAnterior($url){
     $control = true;
@@ -102,7 +101,7 @@ function ejecutable($nombreArchivo, $url){
             comprimido($url, $nombreArchivo, $formato);
         break;
         default:
-            
+            files($url, $nombreArchivo, $formato);
         break;
     }
 }
@@ -143,11 +142,20 @@ function imagenes($url, $imagen, $formato){
                 ".$imagen."
             </div>
             <div class=\"col-sm\">
-              <button href=\"\" onclick=\"\">
-                  <i class=\"material-icons\">
-                    more_vert
-                  </i>
-              </button>
+                <div class=\"dropdown\">
+                    <button class=\"\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                        <i class=\"material-icons\">
+                            more_vert
+                        </i>
+                    </button>
+                    <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">
+                        <a class=\"dropdown-item\" href=\"".$url.$imagen."\" download=\"".$url.$imagen."\">
+                            <i class=\"material-icons\">
+                            save_alt
+                            </i>Download
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -174,7 +182,40 @@ function comprimido($url, $imagen, $formato){
                         </i>
                     </button>
                     <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">
-                        <a class=\"dropdown-item\" href=\"".$url.$imagen."\">
+                        <a class=\"dropdown-item\" href=\"".$url.$imagen."/\" download=\"".$url.$imagen."\">
+                            <i class=\"material-icons\">
+                            save_alt
+                            </i>Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    ";
+}
+
+function files($url, $imagen, $formato){
+    echo "
+    <div class=\"card col-sm container\" style=\"margin:10px;\" ondblclick=\"cargarImagen('".$url.$imagen."');\" touchstart=\"cargarImagen('".$url.$imagen."');\">
+        <div class=\"card-body w-100 row align-items-center\">
+            <div class=\"col-sm\" style=\"width: 80px; padding: 0%;\">
+              <i class=\"material-icons\">
+              insert_drive_file
+              </i>
+            </div>
+            <div class=\"col-sm texto\" >
+                ".$imagen."
+            </div>
+            <div class=\"col-sm\">
+                <div class=\"dropdown\">
+                    <button class=\"\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                        <i class=\"material-icons\">
+                            more_vert
+                        </i>
+                    </button>
+                    <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">
+                        <a class=\"dropdown-item\" href=\"".$url.$imagen."\" download=\"".$url.$imagen."\">
                             <i class=\"material-icons\">
                             save_alt
                             </i>Download
