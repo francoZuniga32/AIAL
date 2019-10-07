@@ -1,5 +1,5 @@
 function cargarDatos() {
-    raiz = "/home/franco/Descargas/";
+    raiz = "media/";
     meterContenido(raiz);
 }
 
@@ -10,6 +10,4 @@ function cargarCarpeta(url) {
 
 function cargarImagen($img){
     console.log($img);
-    $("#modal").modal("show");
-    $("#modal-body").html($img);
 }

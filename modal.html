@@ -19,84 +19,89 @@
     <script src="scriptNas.js"></script>
 </head>
 <body>
+    <!-- los botones del los modales que se usaran mas adelante-->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" >
-            Launch demo modal
-      </button>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2">
-            Launch demo modal
-      </button>
-      <button type="button" class="btn btn-primary" onclick="hoola('funcion')">
-          soso
-      </button>
-      <div ondblclick="modal('#modal2');">
-        hola moda
-      </div>
-      <script>
-      function modal(string){
-        $(string).modal("show");
-      }
-      </script>
+          Launch demo modal
+    </button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2">
+          Launch demo modal
+    </button>
+    <button type="button" class="btn btn-primary" onclick="hoola('funcion')">
+        soso
+    </button>
+    <div ondblclick="modal('#modal2');">
+      hola moda
+    </div>
+    <script>
+    function modal(string){
+      $(string).modal("show");
+    }
+    </script>
     <!-- Modal -->
     <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
+        <div class="modal-dialog w-90" role="document" style=" width: 90%;">
+          <div class="modal-content" style="margin: 10%; width: 90%;">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+              <button type="button" class="btn btn-ligth" data-dismiss="modal">
+                <i class="material-icons">
+                  close
+                  </i>
               </button>
             </div>
-            <div class="modal-body">
-              modal 1
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+            <div class="modal-body" id="mediaContent">
+              <!--<video class="w-100" controls>
+                <source src="../../../../media/franco/72B5-75D7/videos/minecraft/MinecraftHistory[Subtitulado Español].mp4" type="video/mp4">
+              </video>-->
+              <img src="media/Pantallazo-2019-10-01 21-03-22.png" alt="" width="300px">
+              <a href="media/Pantallazo-2019-10-01 21-03-22.png" download="Pantalla">asdasd</a>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Modal -->
-    <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  modal 2
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+
+      <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+          <div class="modal-dialog w-90" role="document" style=" width: 90%;">
+            <div class="modal-content" style="margin: 10%; width: 90%;">
+              <div class="modal-header">
+                <button type="button" class="btn btn-ligth" data-dismiss="modal">
+                  <i class="material-icons">
+                    close
+                    </i>
+                </button>
+              </div>
+              <div class="modal-body" id="mediaContent">
+                <video class="w-100" controls>
+                  <source src="media/MinecraftHistory[Subtitulado Español].mp4" type="video/mp4">
+                </video>
+                <a href="media/Pantallazo-2019-10-01 21-03-22.png" download="Pantalla">asdasd</a>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="card col-sm container" style="width: 300px; height: 80px; margin:10px;" id="carpeta">
-            <div class="card-body w-100 row">
-                <div class="col-sm">
-                  <i class="material-icons">
-                    folder
+      <!-- lo items de la pagina-->
+      <div class="card col-sm container w-75" id="carpeta">
+        <div class="card-body w-100 row">
+            <div class="col-sm">
+              <i class="material-icons">
+                folder
+              </i>
+            </div>
+            <div class="col-sm">
+              folder
+            </div>
+            <div class="col-sm">
+              <a href="">
+                  <i class="material-icons" onclick="alert('')">
+                    more_vert
                   </i>
-                </div>
-                <div class="col-sm">
-                  folder
-                </div>
-                <div class="col-sm">
-                  <a href="">
-                      <i class="material-icons" onclick="alert('')">
-                        more_vert
-                      </i>
-                  </a>
-                </div>
+              </a>
             </div>
         </div>
+      </div>
+
+
     <script>
     $('#myModal').on('shown.bs.modal', function () {
         $('#myInput').trigger('focus')

@@ -2,9 +2,16 @@
 
 $url = $_POST['url'];
 
-if($url != "/home/franco/Descargas/"){
+echo "
+<nav aria-label=\"breadcrumb\">
+    <ol class=\"breadcrumb\">
+        <li class=\"breadcrumb-item active\" aria-current=\"page\">".$url."</li>
+    </ol>
+</nav>";
+
+
+if($url != "media/"){
     $back = accederFicheroAnterior($url);
-    echo $back;
     botonBack($back);
 }
 
@@ -37,7 +44,7 @@ function listarArchivos( $path ){
             echo "</div>
             <div class=\"row justify-content-start\">";
         }
-        ejecutable($files[$i]);
+        ejecutable($files[$i], $path);
     }
     echo "<BR>";
 }
@@ -70,15 +77,34 @@ function botonBack($url){
     ";
 }
 
+function ejecutable($nombreArchivo, $url){
 
-function ejecutable($nombreArchivo){
+    $info = new SplFileInfo($nombreArchivo);
+    $formato = $info->getExtension();
 
-    echo "
-    <div class=\"card col-sm\" style=\"margin:10px;\" ondblclick=\"cargarImagen('".$nombreArchivo."');\" >
-        <div class=\"card-body w-100\">
-            <p class=\"w-auto\">".$nombreArchivo."</p>
-        </div>
-    </div>";
+    switch ($formato) {
+        //imagenes
+        case 'png':
+            imagenes($url, $nombreArchivo, $formato);
+        break;
+        case 'jpg':
+            imagenes($url, $nombreArchivo, $formato);
+        break;
+        //videos
+        case 'mp4':
+            
+        break;
+        //comprimidos
+        case 'zip':
+            comprimido($url, $nombreArchivo, $formato);
+        break;
+        case 'rar':
+            comprimido($url, $nombreArchivo, $formato);
+        break;
+        default:
+            
+        break;
+    }
 }
 
 function carpeta($nombreArchivo, $path){
@@ -87,7 +113,7 @@ function carpeta($nombreArchivo, $path){
         <div class=\"card-body w-100 row align-items-center\">
             <div class=\"col-sm\" style=\"width: 80px; padding: 0%;\">
               <i class=\"material-icons\">
-                folder
+                folder_open
               </i>
             </div>
             <div class=\"col-sm texto\" >
@@ -102,5 +128,62 @@ function carpeta($nombreArchivo, $path){
             </div>
         </div>
     </div>";
+}
+
+function imagenes($url, $imagen, $formato){
+    echo "
+    <div class=\"card col-sm container\" style=\"margin:10px;\" ondblclick=\"cargarImagen('".$url.$imagen."');\" touchstart=\"cargarImagen('".$url.$imagen."');\">
+        <div class=\"card-body w-100 row align-items-center\">
+            <div class=\"col-sm\" style=\"width: 80px; padding: 0%;\">
+              <i class=\"material-icons\">
+                image
+              </i>
+            </div>
+            <div class=\"col-sm texto\" >
+                ".$imagen."
+            </div>
+            <div class=\"col-sm\">
+              <button href=\"\" onclick=\"\">
+                  <i class=\"material-icons\">
+                    more_vert
+                  </i>
+              </button>
+            </div>
+        </div>
+    </div>
+    ";
+}
+
+function comprimido($url, $imagen, $formato){
+    echo "
+    <div class=\"card col-sm container\" style=\"margin:10px;\" ondblclick=\"cargarImagen('".$url.$imagen."');\" touchstart=\"cargarImagen('".$url.$imagen."');\">
+        <div class=\"card-body w-100 row align-items-center\">
+            <div class=\"col-sm\" style=\"width: 80px; padding: 0%;\">
+              <i class=\"material-icons\">
+                folder
+              </i>
+            </div>
+            <div class=\"col-sm texto\" >
+                ".$imagen."
+            </div>
+            <div class=\"col-sm\">
+                <div class=\"dropdown\">
+                    <button class=\"\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                        <i class=\"material-icons\">
+                            more_vert
+                        </i>
+                    </button>
+                    <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">
+                        <a class=\"dropdown-item\" href=\"".$url.$imagen."\">
+                            <i class=\"material-icons\">
+                            save_alt
+                            </i>Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    ";
 }
 ?>
