@@ -16,8 +16,8 @@ function cargarImagen($img){
 
 function cargarVideos($video, $formato){
     $("#videos").modal("show");
-    document.getElementById("videoModal").setAttribute("src",$video);
-    document.getElementById("videoModal").setAttribute("type", "video/"+$formato);
+    $videosInsertar = "<source src=\""+$video+"\" type=\"video/"+$formato+"\" ></source>";
+    $("#videoModal").html($videosInsertar);
     document.getElementById("videoDescarga").setAttribute("download",$video);
 }
 

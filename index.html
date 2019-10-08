@@ -16,6 +16,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
+
+    <script src="scriptNas.js"></script>
 </head>
 <body onload="cargarDatos()">
 
@@ -53,8 +55,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <video class="w-100" controls>
-                <source src="" type="" id="videoModal">
+              <video class="w-100" controls id="videoModal">
               </video>
               <a class="btn btn-ligth align-middle" href="" id="videoDescarga" download="">Descargar
                   <i class="material-icons">
@@ -88,10 +89,10 @@
           </div>
         </div>
     </div>
-    <button onclick="cargarVideos('media/video.mp4')">
-      video
-    </button>
     <script>
+      $("#videos").on("hidden.bs.modal", function () {
+        $("#videoModal").remove();
+      });
       function meterContenido(path){
           console.log(path);
           var parametros = {
@@ -110,6 +111,5 @@
           });
       }
     </script>
-    <script src="scriptNas.js"></script>
 </body>
 </html>

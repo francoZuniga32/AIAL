@@ -91,7 +91,7 @@ function ejecutable($nombreArchivo, $url){
         break;
         //videos
         case 'mp4':
-            video($url, $nombreArchivo, "mp4");
+            video($url, $nombreArchivo, $formato);
         break;
         //comprimidos
         case 'zip':

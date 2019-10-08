@@ -32,6 +32,10 @@
     <div ondblclick="modal('#modal2');">
       hola moda
     </div>
+
+    <button onclick="cargarVideos('media/video.mp4', 'mp4');">
+        video
+    </button>
     <script>
     function modal(string){
       $(string).modal("show");
@@ -60,7 +64,7 @@
       </div>
 
 
-      <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal fade" id="videos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
           <div class="modal-dialog w-90" role="document" style=" width: 90%;">
             <div class="modal-content" style="margin: 10%; width: 90%;">
               <div class="modal-header">
@@ -72,7 +76,8 @@
               </div>
               <div class="modal-body" id="mediaContent">
                 <video class="w-100" controls>
-                  <source src="media/video.mp4" type="video/mp4">
+
+                  //<source src="" type="" id="videoModal">
                 </video>
                 <a href="media/Pantallazo-2019-10-01 21-03-22.png" download="Pantalla">asdasd</a>
               </div>
