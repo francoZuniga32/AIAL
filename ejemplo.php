@@ -91,7 +91,7 @@ function ejecutable($nombreArchivo, $url){
         break;
         //videos
         case 'mp4':
-            
+            video($url, $nombreArchivo, "mp4");
         break;
         //comprimidos
         case 'zip':
@@ -195,9 +195,43 @@ function comprimido($url, $imagen, $formato){
     ";
 }
 
+function video($url, $imagen, $formato){
+    echo "
+    <div class=\"card col-sm container\" style=\"margin:10px;\" ondblclick=\"cargarVideos('".$url.$imagen."', '".$formato."');\" touchstart=\"cargarVideos('".$url.$imagen."', '".$formato."');\">
+        <div class=\"card-body w-100 row align-items-center\">
+            <div class=\"col-sm\" style=\"width: 80px; padding: 0%;\">
+              <i class=\"material-icons\">
+                movie
+              </i>
+            </div>
+            <div class=\"col-sm texto\" >
+                ".$imagen."
+            </div>
+            <div class=\"col-sm\">
+                <div class=\"dropdown\">
+                    <button class=\"\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                        <i class=\"material-icons\">
+                            more_vert
+                        </i>
+                    </button>
+                    <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">
+                        <a class=\"dropdown-item\" href=\"".$url.$imagen."/\" download=\"".$url.$imagen."\">
+                            <i class=\"material-icons\">
+                            save_alt
+                            </i>Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    ";
+}
+
+
 function files($url, $imagen, $formato){
     echo "
-    <div class=\"card col-sm container\" style=\"margin:10px;\" ondblclick=\"cargarImagen('".$url.$imagen."');\" touchstart=\"cargarImagen('".$url.$imagen."');\">
+    <div class=\"card col-sm container\" style=\"margin:10px;\" ondblclick=\"cargarfile('".$url.$imagen."');\">
         <div class=\"card-body w-100 row align-items-center\">
             <div class=\"col-sm\" style=\"width: 80px; padding: 0%;\">
               <i class=\"material-icons\">

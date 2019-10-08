@@ -9,5 +9,20 @@ function cargarCarpeta(url) {
 }
 
 function cargarImagen($img){
-    console.log($img);
+    $("#imagenes").modal("show");
+    document.getElementById("imagenModal").setAttribute("src",$img);
+    document.getElementById("imagenDescarga").setAttribute("download",$img);
+}
+
+function cargarVideos($video, $formato){
+    $("#videos").modal("show");
+    document.getElementById("videoModal").setAttribute("src",$video);
+    document.getElementById("videoModal").setAttribute("type", "video/"+$formato);
+    document.getElementById("videoDescarga").setAttribute("download",$video);
+}
+
+function cargarfile($file){
+    $("#files").modal("show");
+    document.getElementById("fileModal").setAttribute("src", $file);
+    document.getElementById("fileDescarga").setAttribute("download",$file);
 }
