@@ -89,13 +89,32 @@ function ejecutable($nombreArchivo, $url){
         case 'jpg':
             imagenes($url, $nombreArchivo, $formato);
         break;
+        case 'jpeg':
+            imagenes($url, $nombreArchivo, $formato);
+        break;
+        case 'GIF':
+            imagenes($url, $nombreArchivo, $formato);
+        break;
         //videos
         case 'mp4':
+            video($url, $nombreArchivo, $formato);
+        break;
+        case 'WebM':
+            video($url, $nombreArchivo, $formato);
+        break;
+        case 'VP8':
+            video($url, $nombreArchivo, $formato);
+        break; 
+        case 'Vorbis':
             video($url, $nombreArchivo, $formato);
         break;
         //comprimidos
         case 'zip':
             comprimido($url, $nombreArchivo, $formato);
+        break;
+        //documetos
+        case 'pdf':
+            pdf($url, $nombreArchivo, $formato);
         break;
         case 'rar':
             comprimido($url, $nombreArchivo, $formato);
@@ -228,6 +247,38 @@ function video($url, $imagen, $formato){
     ";
 }
 
+function pdf($url, $imagen, $formato){
+    echo "
+    <div class=\"card col-sm container\" style=\"margin:10px;\" ondblclick=\"cargarfile('".$url.$imagen."');\">
+        <div class=\"card-body w-100 row align-items-center\">
+            <div class=\"col-sm\" style=\"width: 80px; padding: 0%;\">
+              <i class=\"material-icons\">
+                 picture_as_pdf
+              </i>
+            </div>
+            <div class=\"col-sm texto\" >
+                ".$imagen."
+            </div>
+            <div class=\"col-sm\">
+                <div class=\"dropdown\">
+                    <button class=\"\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                        <i class=\"material-icons\">
+                            more_vert
+                        </i>
+                    </button>
+                    <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">
+                        <a class=\"dropdown-item\" href=\"".$url.$imagen."\" download=\"".$url.$imagen."\">
+                            <i class=\"material-icons\">
+                            save_alt
+                            </i>Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    ";
+}
 
 function files($url, $imagen, $formato){
     echo "
