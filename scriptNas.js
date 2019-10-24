@@ -21,8 +21,73 @@ function cargarVideos($video, $formato){
     document.getElementById("videoDescarga").setAttribute("download",$video);
 }
 
+function cargarAudio(audio){
+    $("#audio").modal("show");
+    espectro(id, "spec", audio);
+    document.getElementById("videoDescarga").setAttribute("download",$video);
+}
+
 function cargarfile($file){
     $("#files").modal("show");
     document.getElementById("fileModal").setAttribute("src", $file);
     document.getElementById("fileDescarga").setAttribute("download",$file);
+}
+
+function playMusic(){
+    $("#btnPlay").css("display", "none");
+    $("#btnPause").css("display", "block");
+}
+function pauseMusic(){
+    $("#btnPlay").css("display", "block");
+    $("#btnPause").css("display", "none");
+}
+
+function espectro(id, contenedor, media){
+    var Spectrum = WaveSurfer.create({
+        container: '#'+contenedor,
+        progressColor: "#65EEB7",
+        barWidth: 3,
+        width: 300,
+        height: 60,
+        maxCanvasWidth: 300,
+        responsive: true 
+    });
+
+    var buttons = {
+        play: document.getElementById("btnPlay"+id),
+        pause: document.getElementById("btnPause"+id),
+        stop: document.getElementById("btnStop"+id)
+    };
+
+    // Handle Play button
+    buttons.play.addEventListener("click", function(){
+            Spectrum.play();
+
+            // Enable/Disable respectively buttons
+        }, false);
+
+        // Handle Pause button
+        buttons.pause.addEventListener("click", function(){
+            Spectrum.pause();
+
+            // Enable/Disable respectively buttons
+        }, false);
+
+
+        // Handle Stop button
+        /*buttons.stop.addEventListener("click", function(){
+            Spectrum.stop();
+
+            // Enable/Disable respectively buttons
+            buttons.pause.disabled = true;
+            buttons.play.disabled = false;
+            buttons.stop.disabled = true;
+        }, false);*/
+
+    playFalco = true;
+    Spectrum.on('ready', function () {
+        playFalco = true;
+    });
+
+    Spectrum.load(media);
 }

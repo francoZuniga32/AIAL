@@ -29,7 +29,7 @@ function listarArchivos( $url ){
                     echo "</div>
                     <div class=\"row justify-content-start\">";
                 }
-                carpeta($elemento, $path); 
+                carpeta($elemento, $url); 
                 //incrementamos la variable
                 $contadorContenido = $contadorContenido + 1;
             }
@@ -107,6 +107,13 @@ function ejecutable($nombreArchivo, $url){
         break; 
         case 'Vorbis':
             video($url, $nombreArchivo, $formato);
+        break;
+        case 'avi':
+            video($url, $nombreArchivo, $formato);
+        break;
+        //audio
+        case 'mp3':
+            audio($url, $nombreArchivo, $formato);
         break;
         //comprimidos
         case 'zip':
@@ -221,6 +228,39 @@ function video($url, $imagen, $formato){
             <div class=\"col-sm\" style=\"width: 80px; padding: 0%;\">
               <i class=\"material-icons\">
                 movie
+              </i>
+            </div>
+            <div class=\"col-sm texto\" >
+                ".$imagen."
+            </div>
+            <div class=\"col-sm\">
+                <div class=\"dropdown\">
+                    <button class=\"\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                        <i class=\"material-icons\">
+                            more_vert
+                        </i>
+                    </button>
+                    <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">
+                        <a class=\"dropdown-item\" href=\"".$url.$imagen."/\" download=\"".$url.$imagen."\">
+                            <i class=\"material-icons\">
+                            save_alt
+                            </i>Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    ";
+}
+
+function audio($url, $imagen, $formato){
+    echo "
+    <div class=\"card col-sm container\" style=\"margin:10px;\" ondblclick=\"cargarAudio('".$url.$imagen."');\" touchstart=\"cargarVideos('".$url.$imagen."', '".$formato."');\">
+        <div class=\"card-body w-100 row align-items-center\">
+            <div class=\"col-sm\" style=\"width: 80px; padding: 0%;\">
+              <i class=\"material-icons\">
+                audiotrack
               </i>
             </div>
             <div class=\"col-sm texto\" >
