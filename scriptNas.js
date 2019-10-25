@@ -23,7 +23,7 @@ function cargarVideos($video, $formato){
 
 function cargarAudio(audio){
     $("#audio").modal("show");
-    espectro(id, "spec", audio);
+    espectro("spec", audio);
     document.getElementById("videoDescarga").setAttribute("download",$video);
 }
 
@@ -42,7 +42,7 @@ function pauseMusic(){
     $("#btnPause").css("display", "none");
 }
 
-function espectro(id, contenedor, media){
+function espectro(contenedor, media){
     var Spectrum = WaveSurfer.create({
         container: '#'+contenedor,
         progressColor: "#65EEB7",
@@ -54,9 +54,9 @@ function espectro(id, contenedor, media){
     });
 
     var buttons = {
-        play: document.getElementById("btnPlay"+id),
-        pause: document.getElementById("btnPause"+id),
-        stop: document.getElementById("btnStop"+id)
+        play: document.getElementById("btnPlay"),
+        pause: document.getElementById("btnPause"),
+        stop: document.getElementById("btnStop")
     };
 
     // Handle Play button

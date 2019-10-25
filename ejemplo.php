@@ -274,7 +274,7 @@ function audio($url, $imagen, $formato){
                         </i>
                     </button>
                     <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">
-                        <a class=\"dropdown-item\" href=\"".$url.$imagen."/\" download=\"".$url.$imagen."\">
+                        <a class=\"dropdown-item\" href=\"".$url.$imagen."\">
                             <i class=\"material-icons\">
                             save_alt
                             </i>Download
